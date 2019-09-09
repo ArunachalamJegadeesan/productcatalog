@@ -1,0 +1,12 @@
+---
+applications:
+- name: productcatalogweb
+  memory: 1G
+  instances: 1
+  random-route: false
+  path: target/productcatalog-1.0.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git  
+  services:
+   - service-registry
+
+

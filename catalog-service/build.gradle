@@ -1,0 +1,72 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.7.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {	
+	mavenCentral()	
+}
+
+dependencyManagement {
+	imports {
+		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Greenwich.RELEASE"
+		mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:2.1.1.RELEASE"
+	}
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compile  group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+	compile 'io.springfox:springfox-swagger2:2.7.0'
+	compile 'io.springfox:springfox-swagger-ui:2.7.0'
+	compile 'org.springframework.boot:spring-boot-starter-security'
+	compile 'io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry'
+	compile            'com.google.guava:guava:13.0.1'
+	compile            'joda-time:joda-time:2.1'
+
+	testCompile        'junit:junit:4.11'
+	testCompile        'org.mockito:mockito-core:1.9.5'
+}
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/release" }
+	maven { url "https://repo.spring.io/milestone" }
+	maven { url "https://repo.spring.io/snapshot" }
+}
+task writeNewPom << {
+	pom {
+		project {
+			groupId 'org.example'
+			artifactId 'catalogservice'
+			version '1.0.0'
+
+			inceptionYear '2008'
+			licenses {
+				license {
+					name 'The Apache Software License, Version 2.0'
+					url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+					distribution 'repo'
+				}
+			}
+		}
+	}.writeTo("$buildDir/newpom.xml")
+}

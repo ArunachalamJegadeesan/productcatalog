@@ -1,0 +1,86 @@
+swagger: '2.0'
+info:
+  description: Catalog service API Documentation
+  version: 1.0.0
+  title: CatalogService API
+  contact:
+    email: arunachalam.jegadeesan@cognizant.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: localhost
+basePath: /v2
+tags:
+  - name: catalogservice
+    description: service to add or view products to catalog
+    externalDocs:
+      description: Find out more
+      url: 'locahost:8080/createProduct'
+schemes:
+  - http
+paths:
+  /catalogservice:
+    post:
+      tags:
+        - catalogservice
+      summary: Add a new product to catalog
+      description: Add a new product to catalog
+      operationId: create
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Product object that needs to be added to the catalog
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        '405':
+          description: Invalid input
+  /catalogservice/getall:
+    get:
+      tags:
+        - catalogservice
+      summary: Finds all products
+      description: Finds all products
+      operationId: retrieve
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        '400':
+          description: Invalid status value
+definitions:
+  Product:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      productName:
+        type: string
+      stateCode:
+        type: string
+        description: 'two digit state code (TX,IL)'
+      regionCode:
+        type: string
+      available:
+        type: string
+        description: Availablity
+        enum:
+          - 'Y'
+          - 'N'
+      usoc:
+        type: string
+        description: universal order code
+externalDocs:
+  description: Find out more about Swagger
+  url: 'locahost:7070/createproduct'

@@ -1,0 +1,10 @@
+---
+applications:
+- name: bff
+  memory: 1G
+  instances: 1
+  random-route: false
+  path: target/bff-0.0.1-SNAPSHOT.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git  
+  services:
+    - service-registry

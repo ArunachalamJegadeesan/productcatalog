@@ -1,0 +1,4 @@
+#ignore all idea files
+.idea
+#ignore all target folders
+target
