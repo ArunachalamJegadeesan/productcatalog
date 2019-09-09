@@ -5,7 +5,7 @@
   <groupId>com.example</groupId>
   <artifactId>catalog-service</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+    <version>1.0</version>
   <description>Catalog Microservice With  Spring Cloud Service</description>
   <parent>
     <groupId>org.springframework.boot</groupId>

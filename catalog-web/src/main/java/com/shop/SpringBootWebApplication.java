@@ -13,6 +13,10 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class SpringBootWebApplication  extends SpringBootServletInitializer {
 
 
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
+		return super.configure(builder);
+	}
+
 	
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(SpringBootWebApplication.class, args);
