@@ -13,13 +13,13 @@ import javax.persistence.Table;
 public class ProductCatalog{
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    private long id;
 
     public String getProductName() {
         return productName;

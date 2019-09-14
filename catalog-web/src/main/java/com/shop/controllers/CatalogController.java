@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shop.model.Product;
@@ -54,7 +55,14 @@ public class CatalogController {
 		logger.debug("after save Product>>>>");
 		return "redirect:/refresh";
 	}
-	
+
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(@RequestParam Long id) {
+		logger.debug("Entering delete..");
+		service.delete(id);
+		logger.debug("after delete Product>>>>");
+		return "redirect:/refresh";
+	}
 	
 	@RequestMapping(value = "/refresh", method = RequestMethod.GET)
 	public String 	refresh(Map<String, Object> model){				

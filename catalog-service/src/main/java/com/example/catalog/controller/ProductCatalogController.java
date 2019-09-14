@@ -14,8 +14,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.util.List;
-
-
+import java.util.Optional;
 
 
 @Api(
@@ -54,5 +53,27 @@ public class ProductCatalogController{
     public  List<ProductCatalog> getAllProducts() {
     	  logger.debug("Entered getAllProducts >>");
           return (List<ProductCatalog>)catalogRepository.findAll();
+    }
+
+
+    @DeleteMapping("/delete/{product}")
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "delete the given product from catalog", notes = "Delete  products from catalog")
+    @ApiResponses(value=
+            {@ApiResponse(code = 500,message = "Fields are with validation errors"),
+                    @ApiResponse(code = 400, message = "Error occurred while processing request")}
+    )
+    public  ResponseEntity<String> delete(@ApiParam(value = "delete  product from catalog")
+                                              @PathVariable long product) {
+        logger.debug("Entered add() >>"+product);
+        Optional<ProductCatalog> isAvailable =  catalogRepository.findById(product);
+        if (isAvailable.isPresent()) {
+            catalogRepository.deleteById(product);
+            logger.info("Product delete from catalog : id :" + product);
+        }else{
+            logger.info("No Product  with  id :" + product);
+        }
+        logger.debug("Exited delete() >>"+product);
+        return new ResponseEntity<String>("deleted :"+product, HttpStatus.OK);
     }
 }

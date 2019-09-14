@@ -58,6 +58,7 @@
 		<table class = " table ">
 		<thead>
 		<tr class ="warning">
+		<td>Id</td>
 		<td>Product Name</td>
 		<td>State Code</td>
 		<td>Region Code </td>
@@ -69,12 +70,13 @@
 		<tbody>
 <c:forEach var="product" items="${products}">
 <tr class="active">
+    <td><c:out value="${product.id}"></c:out></td>
 	<td><c:out value="${product.productName}"></c:out></td>
 	<td><c:out value="${product.stateCode}"></c:out></td>
 	<td><c:out value="${product.regionCode}"></c:out></td>
 	<td><c:out value="${product.usoc}"></c:out></td>
 	<td><c:out value="${product.available}"></c:out></td>
-	<td><a href="/catalogDelete?id=${product.id}"><img src="/images/delete.png" width="30" height="20" alt="delete"></a></td>
+	<td><a href="/delete?id=${product.id}"><img src="/images/delete.png" width="30" height="20" alt="delete"></a></td>
 </tr>
 </c:forEach>
 </tbody>

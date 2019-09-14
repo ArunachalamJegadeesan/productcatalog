@@ -32,24 +32,28 @@ public class CatalogService {
 	}
 	
 	public void create(Product product){	
-		logger.debug("CatalogService Create Invoked" );
+		logger.debug("catalogservice create invoked.." );
 		if(product!=null)
 		template.postForLocation(bffURL(), product);
 	}
-	
-	//retrive all products
+
 	public Product[] retrieve(){
-		logger.debug("CatalogService Retrive Invoked" );
+		logger.debug("catalogservice retrive invoked.." );
 		 Product[] products  =  template.getForObject(bffURL()+"/getall", Product[].class);
 		return products;
 	}
 
+	public void delete(long id){
+		logger.debug("catalogservice delete  invoked" );
+			template.delete(bffURL()+"/delete/"+id);
+	}
+
 	private String bffURL() {
 		InstanceInfo instance = discoveryClient.getNextServerFromEureka("BFF", false);
-		logger.debug("instanceID: {}", instance.getId());
+		logger.debug("instanceid: {}", instance.getId());
 
 		String bffURL = instance.getHomePageUrl();
-		logger.debug("bff service homePageUrl: {}", bffURL);
+		logger.debug("bff service homeurl: {}", bffURL);
 
 		return bffURL+"/bff/catalog";
 	}

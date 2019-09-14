@@ -24,12 +24,11 @@ import static org.mockito.Mockito.when;
 public class CatalogControllerTest {
 	
 	@MockBean
-    private  CatalogService service; 
-	
+    private  CatalogService service;
+
 	@Autowired
 	private MockMvc mockMvc;
-	
-	
+
 	@Test
 	public void WebRoot_ShouldShowCreateProductPageWithEmptyValues() throws Exception 
 	{
@@ -52,7 +51,5 @@ public class CatalogControllerTest {
 		this.mockMvc.perform(get("/refresh")).andDo(print()).andExpect(status().isOk())
 		.andExpect(model().attribute("products", products))
 		.andExpect(view().name("createProduct"));
-		
-		
 	}
 }
