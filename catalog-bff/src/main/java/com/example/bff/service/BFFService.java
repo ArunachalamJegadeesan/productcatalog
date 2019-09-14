@@ -1,50 +1,50 @@
 package com.example.bff.service;
 
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.netflix.appinfo.InstanceInfo;
-import com.netflix.discovery.EurekaClient;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.beans.factory.annotation.Value;
 
-@Component
+@Service
 public class BFFService {
 
-
     private Logger logger = LoggerFactory.getLogger(BFFService.class);
+
     @Autowired
     private RestTemplate template;
 
-    private EurekaClient discoveryClient;
+    @Value("${catalog.service.uri}")
+    private String catalogserviceURI;
 
-    @Autowired
-    public BFFService(EurekaClient discoveryClient){
-        this.discoveryClient = discoveryClient;
-    }
-
+    @HystrixCommand(fallbackMethod = "proxyAdd")
     public void addProduct(Object product) {
-        template.postForLocation(catalogURL(),product);
+        template.postForLocation(catalogserviceURI,product);
     }
 
+    @HystrixCommand(fallbackMethod = "proxyDelete")
     public void delete(long product) {
         logger.debug("Delete product");
-        template.delete(catalogURL()+"/delete/"+product);
+        template.delete(catalogserviceURI+"/delete/"+product);
     }
 
+    @HystrixCommand(fallbackMethod = "proxygetAll")
     public  Object[] getAll() {
-               Object pro[]= template.getForObject(catalogURL()+"/getall",Object[].class);
+               Object pro[]= template.getForObject(catalogserviceURI+"/getall",Object[].class);
                return pro;
     }
-    private String catalogURL() {
-        InstanceInfo instance = discoveryClient.getNextServerFromEureka("CATALOGSERVICE", false);
-        logger.debug("instanceID: {}", instance.getId());
-        StringBuilder url = new StringBuilder(instance.getHomePageUrl())
-                                        .append("/catalog");
-        logger.debug("bff service: {}", url.toString());
-        return url.toString();
+    public void proxyDelete(long product) {
+        logger.debug("Catalog Service Down  try later... .");
     }
-
+    public Object[] proxygetAll() {
+        logger.debug("Catalog Service Down  try later... .");
+        Object temp[]=null;
+        return temp;
+    }
+    public void proxyAdd(Object product) {
+        logger.debug("Catalog Service Down  try later... .");
+    }
     }

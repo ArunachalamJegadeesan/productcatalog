@@ -5,10 +5,12 @@ import org.omg.PortableInterceptor.Interceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,6 +18,7 @@ import java.util.Collections;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableCircuitBreaker
 public class BffApplication {
 
 	@Autowired
@@ -25,6 +28,7 @@ public class BffApplication {
 		SpringApplication.run(BffApplication.class, args);
 	}
 
+	@LoadBalanced
 	@Bean
 	public RestTemplate template() {
 		RestTemplate template = new RestTemplate();

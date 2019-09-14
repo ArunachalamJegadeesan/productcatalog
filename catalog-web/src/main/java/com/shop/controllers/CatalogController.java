@@ -22,10 +22,7 @@ import com.shop.service.CatalogService;
 public class CatalogController {
 
 	Logger logger = LoggerFactory.getLogger(CatalogController.class);
-	
-	
     private final CatalogService service;
-
 
     public CatalogController(CatalogService service) {
     	this.service=service;
@@ -38,7 +35,6 @@ public class CatalogController {
 		return "createProduct";
 	}
 
-
 	@RequestMapping(value = "/catalogAdd", method = RequestMethod.POST)
 	public String doCreate(@Valid @ModelAttribute("productForm") Product productForm,
 			Map<String, Object> model,BindingResult bindingResult) {
@@ -49,9 +45,7 @@ public class CatalogController {
 			logger.debug("Retuning back to  productpage");
 			return "redirect:/createProduct";
 		}
-		
-		service.create(productForm);						
-				
+		service.create(productForm);
 		logger.debug("after save Product>>>>");
 		return "redirect:/refresh";
 	}
