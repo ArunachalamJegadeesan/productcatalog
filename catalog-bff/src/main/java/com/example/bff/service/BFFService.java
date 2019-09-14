@@ -23,25 +23,27 @@ public class BFFService {
     @Autowired
     public BFFService(EurekaClient discoveryClient){
         this.discoveryClient = discoveryClient;
-
     }
-
 
     public void addProduct(Object product) {
         template.postForLocation(catalogURL(),product);
+    }
+
+    public void delete(long product) {
+        logger.debug("Delete product");
+        template.delete(catalogURL()+"/delete/"+product);
     }
 
     public  Object[] getAll() {
                Object pro[]= template.getForObject(catalogURL()+"/getall",Object[].class);
                return pro;
     }
-
     private String catalogURL() {
         InstanceInfo instance = discoveryClient.getNextServerFromEureka("CATALOGSERVICE", false);
         logger.debug("instanceID: {}", instance.getId());
         StringBuilder url = new StringBuilder(instance.getHomePageUrl())
                                         .append("/catalog");
-        logger.debug("bff service homePageUrl: {}", url.toString());
+        logger.debug("bff service: {}", url.toString());
         return url.toString();
     }
 

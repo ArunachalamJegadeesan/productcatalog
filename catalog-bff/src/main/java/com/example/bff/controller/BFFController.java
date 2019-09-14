@@ -27,9 +27,19 @@ public class BFFController{
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<String> addProduct(@RequestBody Object product) {
-        logger.debug("Entered add() >>"+product);
+        logger.debug("entered add() >>"+product);
         service.addProduct(product);
         return  new ResponseEntity<String>("",HttpStatus.CREATED);
+
+    }
+
+
+    @DeleteMapping("/catalog/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<String> deleteProduct(@PathVariable long id) {
+        logger.debug("entered delete() >>"+id);
+        service.delete(id);
+        return  new ResponseEntity<String>("Done with "+id,HttpStatus.OK);
 
     }
 
@@ -37,7 +47,7 @@ public class BFFController{
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public Object[] getAllProducts() {
-        logger.debug("Entered getAllProducts >>");
+        logger.debug("entered getAll >>");
         return service.getAll();
     }
 }
