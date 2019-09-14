@@ -29,9 +29,9 @@ public class CatalogService {
 	@Autowired
 	private EurekaClient discoveryClient;
 
-	
-	@Value("${catalog.bff.uri}")
-	private  String bffURI;
+
+	@Value("${catalog.bff.name}")
+	private  String bffAppName;
 
 	public void create(Product product){	
 		logger.debug("catalogservice create invoked.." );
@@ -51,7 +51,7 @@ public class CatalogService {
 	}
 
 	private String bffURL() {
-		InstanceInfo instance = discoveryClient.getNextServerFromEureka("bff", false);
+		InstanceInfo instance = discoveryClient.getNextServerFromEureka(bffAppName, false);
 		logger.debug("instanceid: {}", instance.getId());
 
 		String bffURL = instance.getHomePageUrl();
