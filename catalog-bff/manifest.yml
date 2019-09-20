@@ -9,3 +9,4 @@ applications:
   services:
     - service-registry
     - rabbitMq-Hystrix
+    - cfgInstanceMaster

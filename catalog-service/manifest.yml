@@ -9,3 +9,5 @@ applications:
   services:
     - mysql-iot-pcf
     - service-registry
+    - rabbitMq-Hystrix
+    - cfgInstanceMaster

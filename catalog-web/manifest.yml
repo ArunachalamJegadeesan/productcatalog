@@ -8,5 +8,7 @@ applications:
   buildpack: https://github.com/cloudfoundry/java-buildpack.git  
   services:
    - service-registry
+   - rabbitMq-Hystrix
+   - cfgInstanceMaster
 
 
