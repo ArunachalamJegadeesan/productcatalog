@@ -1,0 +1,5 @@
+com/example/catalog/repository/ProductCatalogRepository.class
+com/example/catalog/SecurityConfiguration.class
+com/example/catalog/entity/ProductCatalog.class
+com/example/catalog/CatalogApplication.class
+com/example/catalog/controller/ProductCatalogController.class
