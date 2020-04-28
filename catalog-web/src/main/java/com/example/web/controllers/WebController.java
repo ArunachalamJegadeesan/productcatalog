@@ -1,32 +1,27 @@
-package com.shop.controllers;
+package com.example.web.controllers;
 
 
 import java.util.Map;
 import javax.validation.Valid;
 
+import com.example.web.model.Product;
+import com.example.web.service.WebService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.shop.model.Product;
-import com.shop.service.CatalogService;
 
 @Controller
-@RefreshScope
-public class CatalogController {
+public class WebController {
 
-	Logger logger = LoggerFactory.getLogger(CatalogController.class);
-    private final CatalogService service;
+	Logger logger = LoggerFactory.getLogger(WebController.class);
+    private final WebService service;
 
-    public CatalogController(CatalogService service) {
+    public WebController(WebService service) {
     	this.service=service;
     }
 	

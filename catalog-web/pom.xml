@@ -4,7 +4,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>catalog-web</artifactId>
+	<artifactId>web</artifactId>
 	<packaging>war</packaging>
 	<groupId>com.example</groupId>
     <version>1.0</version>
@@ -24,6 +24,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>io.pivotal.spring.cloud</groupId>
 			<artifactId>spring-cloud-services-starter-config-client</artifactId>
@@ -32,6 +33,15 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>io.pivotal.spring.cloud</groupId>
+			<artifactId>spring-cloud-services-starter-service-registry</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -44,14 +54,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.pivotal.spring.cloud</groupId>
-			<artifactId>spring-cloud-services-starter-service-registry</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -80,6 +82,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			<version>3.3.7</version>
 		</dependency>
 	</dependencies>
+	<!--
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -98,6 +101,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	-->
 	<build>
 		<plugins>			
 			<plugin>

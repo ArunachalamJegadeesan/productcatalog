@@ -1,0 +1,13 @@
+
+  spring:
+    application.name: web
+    #spring mvc setup
+    mvc.view:
+       prefix: /WEB-INF/jsp/
+       suffix: .jsp
+    #Basic authentication
+    security.user:
+      name: user
+      password: password
+  #catalog url
+  bff.uri:  http://localhost:8080

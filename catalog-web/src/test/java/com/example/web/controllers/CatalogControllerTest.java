@@ -1,10 +1,8 @@
 
-package com.shop.controllers;
+package com.example.web.controllers;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -13,18 +11,18 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import com.shop.model.Product;
-import com.shop.service.CatalogService;
+import com.example.web.model.Product;
+import com.example.web.service.WebService;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(CatalogController.class)
+@WebMvcTest(WebController.class)
 public class CatalogControllerTest {
 	
 	@MockBean
-    private  CatalogService service;
+    private WebService service;
 
 	@Autowired
 	private MockMvc mockMvc;

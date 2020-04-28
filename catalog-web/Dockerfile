@@ -4,9 +4,9 @@ MAINTAINER Arunachalam.J
 RUN mkdir -p /deploy
 WORKDIR /deploy
 EXPOSE 8080/tcp
-ARG DEPENDENCY=target/productcatalog-1.0.jar
+ARG DEPENDENCY=target/web-1.0.war
 COPY ${DEPENDENCY} .
-ENTRYPOINT ["java", "-jar","productcatalog-1.0.jar"]
+ENTRYPOINT ["java", "-jar","web-1.0.war"]
 
 
 
