@@ -20,23 +20,21 @@ public class WebService {
 	@Value("${bff.uri}")
 	private  String bffURL;
 
-	public final String bffContext = bffURL + "/bff/catalog";
-
 	public void create(Product product){
-		logger.debug("catalogservice create invoked.." );
+		logger.debug("catalogservice create invoked.." + bffURL );
 		if(product!=null)
-		template.postForLocation( bffContext, product);
+		template.postForLocation( bffURL, product);
 	}
 
 	public Product[] retrieve(){
-		logger.debug("catalogservice retrive invoked.." );
-		 Product[] products  =  template.getForObject( bffContext+"/getall", Product[].class);
+		logger.debug("catalogservice retrive invoked.." + bffURL);
+		 Product[] products  =  template.getForObject( bffURL+"/getall", Product[].class);
 		 return products;
 	}
 
 	public void delete(long id){
-		logger.debug("catalogservice delete  invoked" );
-			template.delete( bffContext+"/delete/"+id);
+		logger.debug("catalogservice delete  invoked: "+ bffURL );
+			template.delete( bffURL+"/delete/"+id);
 	}
 
 

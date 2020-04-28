@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/catalog-bff/bff.iml" filepath="$PROJECT_DIR$/catalog-bff/bff.iml" />
+      <module fileurl="file://$PROJECT_DIR$/catalog-service/catalogservice.iml" filepath="$PROJECT_DIR$/catalog-service/catalogservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/productcatalog.iml" filepath="$PROJECT_DIR$/productcatalog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/catalog-web/web.iml" filepath="$PROJECT_DIR$/catalog-web/web.iml" />
+    </modules>
+  </component>
+</project>

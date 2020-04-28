@@ -10,4 +10,4 @@
       name: user
       password: password
   #catalog url
-  bff.uri:  http://localhost:8080
+  bff.uri:  http://localhost:8080/bff/catalog
