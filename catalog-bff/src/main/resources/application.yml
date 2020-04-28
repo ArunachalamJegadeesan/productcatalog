@@ -1,0 +1,13 @@
+
+---
+spring:
+  application:
+    name: bff
+caralogservice:
+  uri: //catalog-service/catalog
+
+logging:
+  level:
+    com.example.bff: DEBUG
+
+

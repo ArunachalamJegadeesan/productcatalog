@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example</groupId>
-  <artifactId>catalog-service</artifactId>
+  <artifactId>catalogservice</artifactId>
   <packaging>jar</packaging>
     <version>1.0</version>
   <description>Catalog Microservice With  Spring Cloud Service</description>
@@ -24,6 +24,7 @@
       <artifactId>spring-boot-starter-web</artifactId>
       <scope>compile</scope>
     </dependency>
+    <!--
     <dependency>
       <groupId>io.pivotal.spring.cloud</groupId>
       <artifactId>spring-cloud-services-starter-config-client</artifactId>
@@ -31,6 +32,12 @@
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -59,17 +66,8 @@
       <version>2.7.0</version>
       <scope>compile</scope>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.pivotal.spring.cloud</groupId>
-      <artifactId>spring-cloud-services-starter-service-registry</artifactId>
-      <scope>compile</scope>
-    </dependency>
   </dependencies>
+  <!--
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -88,6 +86,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  -->
   <build>
     <plugins>
       <plugin>
