@@ -4,3 +4,6 @@ productcatalog.iml
 catalog-bff/bff.iml
 catalog-service/catalogservice.iml
 catalog-web/web.iml
+catalog-bff/target
+catalog-service/target
+catalog-web/target
