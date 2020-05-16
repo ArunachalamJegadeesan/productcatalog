@@ -1,0 +1,6 @@
+.idea
+productcatalog.iml
+.DS_Store
+catalog-bff/bff.iml
+catalog-service/catalogservice.iml
+catalog-web/web.iml
